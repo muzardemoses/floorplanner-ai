@@ -1,6 +1,6 @@
 @tailwind base;
 
-h1 {
+/* h1 {
   @apply text-2xl font-bold;
 }
 h2 {
@@ -20,16 +20,19 @@ h6 {
 }
 p {
   @apply text-base;
-}
-
+} */
 
 body {
   @apply transition duration-500 ease-in-out;
 }
 
-.middle{
-  @apply  before:bg-green-900  font-bold transition duration-500 ease-in-out  dark:before:bg-green-300;
+.middle {
+  @apply before:bg-green-900  font-bold transition duration-500 ease-in-out  dark:before:bg-green-300;
 }
 
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Roboto", sans-serif;
+}
