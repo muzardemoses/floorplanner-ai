@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import city from "./Images/city.jpg";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=" text-center">
+      <div>
+        <b>
+          <h1 className=" text-teal-500">floorplanner.ai</h1>
+        </b>
+        <h2>
+          Transforming Spaces, Powered by AI: Discover Limitless Possibilities
+          for Your Dream Build.
+        </h2>
+        <img 
+        src={city} 
+        alt="city"
+        />
+      </div>
     </div>
   );
 }
