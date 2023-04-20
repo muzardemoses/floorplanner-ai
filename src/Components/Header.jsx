@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../Images/logo.png";
 
 export const Header = () => {
@@ -29,16 +29,20 @@ export const Header = () => {
             isActive ? " text-teal-600" : " text-teal-500"
           }
         >
-          Planning
+          Pricing
         </NavLink>
       </div>
       <div className="flex gap-4 items-center font-semibold">
-        <button className="bg-teal-500 text-white h-10 px-4 rounded-md">
-          Login
-        </button>
-        <button className="bg-teal-500 text-white h-10 px-4 rounded-md">
-          Sign Up
-        </button>
+        <Link to="/login">
+          <button className="bg-teal-500 text-white h-10 px-4 rounded-md">
+            Login
+          </button>
+        </Link>
+        <Link to="/register">
+          <button className="bg-teal-500 text-white h-10 px-4 rounded-md">
+            Sign Up
+          </button>
+        </Link>
       </div>
     </div>
   );
