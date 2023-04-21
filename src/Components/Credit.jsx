@@ -14,6 +14,11 @@ export const Credit = () => {
     setShowForm(true);
   };
 
+  const cancelPurchase = () => {
+    //setPurchaseAmount(0);
+    setShowForm(false);
+  };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -140,12 +145,21 @@ export const Credit = () => {
               />
             </div>
           </div>
-          <button
-            type="submit"
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-          >
-            Purchase
-          </button>
+          <div className="flex gap-6 mt-7">
+            <button
+              type="button"
+              className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+              onClick={cancelPurchase}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            >
+              Purchase
+            </button>
+          </div>
         </form>
       ) : null}
     </div>

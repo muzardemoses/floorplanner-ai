@@ -1,28 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { signOut, auth } from "../Config/firebase.js";
-import { useDispatch, useSelector } from "react-redux";
-import { logout, selectUser } from "../Features/userSlice";
+import { useSelector } from "react-redux";
+import { selectUser } from "../Features/userSlice";
 import { useNavigate } from "react-router-dom";
 import { Projects } from "../Components/Projects";
 import { Next } from "../Components/Next";
 import { Credit } from "../Components/Credit";
 
 export const Dashboard = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(selectUser);
   const [showUserDetails, setShowUserDetails] = useState(false);
 
-  const SignOut = async () => {
-    try {
-      await signOut(auth);
-      dispatch(logout);
-      localStorage.removeItem("user");
-      window.location.href = "/";
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+ 
 
   useEffect(() => {
     if (!user) {
@@ -175,9 +164,6 @@ export const Dashboard = () => {
 
   return (
     <div className="container mx-auto pt-24  gap-6">
-      <h1 className="text-4xl font-semibold text-gray-700">
-        This is the dashboard{" "}
-      </h1>
       {showUserDetails ? (
         <div>
           <h2 className="text-2xl font-semibold text-gray-700">
@@ -191,13 +177,6 @@ export const Dashboard = () => {
       ) : (
         <h1>Loading...</h1>
       )}
-      <button
-        className="h-11 w-40 flex items-center justify-center gap-3 bg-red-500 text-white rounded-md font-semibold text-lg hover:bg-red-600 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
-        onClick={SignOut}
-      >
-        Sign out
-      </button>
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
       <Projects />
       <Next />
       <Credit />
