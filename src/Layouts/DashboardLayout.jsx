@@ -5,10 +5,10 @@ export const DashboardLayout = ({ children }) => {
   return (
     <div
       style={{ backgroundColor: "rgb(246, 248, 255)" }}
-      className=" min-h-screen flex"
+      className="h-screen flex overflow-hidden"
     >
       <SubNav />
-      {children}
+      <div className="flex-1 overflow-auto">{children}</div>
     </div>
   );
 };
