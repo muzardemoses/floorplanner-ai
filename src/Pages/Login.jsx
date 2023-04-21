@@ -1,15 +1,82 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.png";
 import googleSvg from "../Images/google.svg";
+import { selectUser } from "../Features/userSlice";
+import { useSelector } from "react-redux";
+import {
+  signInWithEmailAndPassword,
+  signInWithRedirect,
+  auth,
+  provider,
+  getRedirectResult,
+} from "../Config/firebase.js";
+import {
+  getFirestore,
+  doc,
+  updateDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const user = useSelector(selectUser);
+  const db = getFirestore();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+    return () => {};
+  }, [user]);
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      const userRef = doc(db, "users", user.uid);
+      await updateDoc(userRef, {
+        lastLogin: serverTimestamp(),
+      });
+    } catch (error) {
+      setError(error.message);
+      setHasError(true);
+    }
+  };
+
+  const signInWithGoogle = () => {
+    signInWithRedirect(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = provider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // ...
+        
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = provider.credentialFromError(error);
+        // ...
+      });
+  };
   return (
     <div>
       <div className="pt-24 h-screen flex flex-col items-center w-full text-center">
         <img src={logo} alt="logo" className="h-8" />
         <form
-        //onSubmit={onSubmit}
+        onSubmit={onSubmit}
         >
           <h3 className="font-semibold text-3xl text-gray-900 mt-6 mb-3">
             Log in to your account
@@ -33,14 +100,14 @@ export const Login = () => {
                 type="email"
                 placeholder="Enter your email"
                 required
-                //value={email}
-                // onChange={(event) => setEmail(event.target.value)}
-                // {...(hasError && {
-                //   style: {
-                //     border: "1px solid red",
-                //     width: "360px",
-                //   },
-                // })}
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                {...(hasError && {
+                  style: {
+                    border: "1px solid red",
+                    width: "360px",
+                  },
+                })}
               />
             </label>
             <label htmlFor="password" class="flex flex-col gap-1.5">
@@ -58,16 +125,16 @@ export const Login = () => {
                 type="password"
                 placeholder="Enter your password"
                 required
-                // value={password}
-                // onChange={(event) => setPassword(event.target.value)}
-                // {...(hasError && {
-                //   style: {
-                //     border: "1px solid red",
-                //     width: "360px",
-                //   },
-                // })}
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                {...(hasError && {
+                  style: {
+                    border: "1px solid red",
+                    width: "360px",
+                  },
+                })}
               />
-              {/* <p>
+              <p>
               {hasError && (
                 <span
                   className="text-red-500 text-sm inline-block"
@@ -76,7 +143,7 @@ export const Login = () => {
                   {error}
                 </span>
               )}
-            </p> */}
+            </p>
             </label>
             <div className="flex items-center justify-between mt-1">
               <label
@@ -119,7 +186,7 @@ export const Login = () => {
                focus:ring-offset-gray-100 flex items-center justify-center gap-3
             ,   disabled:cursor-not-allowed"
           style={{ width: "360px" }}
-          // onClick={signInWithGoogle}
+          onClick={signInWithGoogle}
         >
           <img src={googleSvg} alt="google-icon" height="24" width="24" />
           Sign in with Google
