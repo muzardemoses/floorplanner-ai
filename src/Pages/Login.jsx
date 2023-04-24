@@ -58,7 +58,6 @@ export const Login = () => {
         // The signed-in user info.
         const user = result.user;
         // ...
-        
       })
       .catch((error) => {
         // Handle Errors here.
@@ -75,9 +74,7 @@ export const Login = () => {
     <div>
       <div className="pt-24 h-screen flex flex-col items-center w-full text-center">
         <img src={logo} alt="logo" className="h-8" />
-        <form
-        onSubmit={onSubmit}
-        >
+        <form onSubmit={onSubmit}>
           <h3 className="font-semibold text-3xl text-gray-900 mt-6 mb-3">
             Log in to your account
           </h3>
@@ -90,12 +87,11 @@ export const Login = () => {
                 Email
               </p>
               <input
-                className="h-11 border border-solid bg-white border-gray-300 font-normal 
+                className="form-btn h-11 border border-solid bg-white border-gray-300 font-normal 
              text-base text-gray-900 rounded-lg px-3.5 py-2.5 shadow-sm focus:border- 
           purple-300 focus:border focus:shadow-purple-100 focus:outline-none focus:ring-2 
               focus:ring-purple-200 disabled:background-gray-50 disabled:border-gray-300 
               disabled:text-gray-500 after:bg-white"
-                style={{ width: "360px" }}
                 id="email"
                 type="email"
                 placeholder="Enter your email"
@@ -110,17 +106,16 @@ export const Login = () => {
                 })}
               />
             </label>
-            <label htmlFor="password" class="flex flex-col gap-1.5">
+            <label htmlFor="password" className="flex flex-col gap-1.5">
               <p className="text-sm font-medium text-gray-700 text-left">
                 Password
               </p>
               <input
-                className="h-11 border border-solid bg-white border-gray-300 font-normal 
+                className="form-btn h-11 border border-solid bg-white border-gray-300 font-normal 
              text-base text-gray-900 rounded-lg px-3.5 py-2.5 shadow-sm focus:border- 
           purple-300 focus:border focus:shadow-purple-100 focus:outline-none focus:ring-2 
               focus:ring-purple-200 disabled:background-gray-50 disabled:border-gray-300 
               disabled:text-gray-500 after:bg-white"
-                style={{ width: "360px" }}
                 id="password"
                 type="password"
                 placeholder="Enter your password"
@@ -135,15 +130,15 @@ export const Login = () => {
                 })}
               />
               <p>
-              {hasError && (
-                <span
-                  className="text-red-500 text-sm inline-block"
-                  style={{ width: "360px" }}
-                >
-                  {error}
-                </span>
-              )}
-            </p>
+                {hasError && (
+                  <span
+                    className="form-btn text-red-500 text-sm inline-block"
+
+                  >
+                    {error}
+                  </span>
+                )}
+              </p>
             </label>
             <div className="flex items-center justify-between mt-1">
               <label
@@ -159,33 +154,31 @@ export const Login = () => {
                 Remember for 30 days
               </label>
               <p className="text-sm font-normal text-teal-700 ">
-                <NavLink to="/" className="">
+                <NavLink to="/reset" className="">
                   Forgot password
                 </NavLink>
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-4 mt-6">
+          <div className="flex flex-col gap-4 mt-6 items-center">
             <button
-              className="h-11 text-white    rounded-lg border-solid font-semibold text-base 
+              className="form-btn h-11 text-white    rounded-lg border-solid font-semibold text-base 
                border-teal-600 hover:bg-teal-700  bg-teal-600 border    
                 hover:border-teal-700
                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100 
                focus:ring-offset-gray-100 flex items-center justify-center gap-3
             ,   disabled:cursor-not-allowed"
-              style={{ width: "360px" }}
             >
               Sign in
             </button>
           </div>
         </form>
         <button
-          class="h-11 text-gray-700  rounded-lg border-solid font-semibold text-base mt-4
+          className="form-btn h-11 text-gray-700  rounded-lg border-solid font-semibold text-base mt-4
                border-gray-300  bg-white border hover:border-gray-300 hover:bg-gray-50
                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100 
                focus:ring-offset-gray-100 flex items-center justify-center gap-3
             ,   disabled:cursor-not-allowed"
-          style={{ width: "360px" }}
           onClick={signInWithGoogle}
         >
           <img src={googleSvg} alt="google-icon" height="24" width="24" />

@@ -36,3 +36,89 @@ body {
 body {
   font-family: "Roboto", sans-serif;
 }
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+
+
+
+
+.hamburger{
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  transition: all 0.25s;
+  position: relative;
+}
+
+.harburger-top,
+.harburger-middle,
+.harburger-bottom{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  transform: translate(0px);
+  transition:all 0.5s ;
+}
+.harburger-middle{
+  transform: translateY(7px);
+}
+.harburger-bottom{
+  transform: translateY(14px);
+}
+
+.open{
+  transform: rotate(90deg);
+  transform: translateY(0px);
+}
+.open .harburger-top{
+  transform: rotate(45deg) translateY(6px) translate(6px);
+}
+.open .harburger-middle{
+ display: none;
+}
+.open .harburger-bottom{
+  transform: rotate(-45deg) translateY(6px) translate(-6px);
+}
+
+.form-btn{
+  width: 360px;
+}
+
+@media screen and (max-width: 900px) {
+
+ 
+  .header-links {
+    position: fixed;
+    top:5rem;
+    right: 0;
+    height: 100%;
+    width: 45%;
+    z-index: 1;
+    transform: translateX(100%);
+   
+    /* background-color: rgb(35 44 58); */
+  }
+  
+  .header-links.open {
+    transform: translateX(0%);
+  
+  }
+  
+  .link-black{
+    color: black;
+  }
+
+  .form-btn{
+    width: 300px;
+  }
+  
+  }

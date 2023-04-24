@@ -36,25 +36,30 @@ export const Dashboard = () => {
   // };
 
   return (
-    <div className="container mx-auto pt-24  gap-6">
-      {showUserDetails ? (
-        <div>
-          <h2 className="text-2xl font-semibold text-gray-700">
-            Welcome
-            <span className="text-green-500"> {user.user.displayName}</span>
-          </h2>
-          <h3 className="text-base font-medium text-gray-300">
-            {user.user.email}
-          </h3>
+    <div className="container mx-auto pt-24 px-8 flex flex-col gap-8">
+      <div>
+        {showUserDetails ? (
+          <div>
+            <h2 className="text-2xl font-semibold text-gray-700">
+              Welcome
+              <span className="text-green-500"> {user.user.displayName}</span>
+            </h2>
+            <h3 className="text-base font-medium text-gray-300">
+              {user.user.email}
+            </h3>
+          </div>
+        ) : (
+          <h1>Loading...</h1>
+        )}
+      </div>
+
+      <div className="flex justify-between w-full px-12 lg:flex-col">
+        <div className=" lg:order-2">
+          <Projects />
         </div>
-      ) : (
-        <h1>Loading...</h1>
-      )}
-      <div className="flex justify-between w-full px-12">
-        <Projects />
 
         {/* credits */}
-        <div className="text-lg font-medium flex gap-1">
+        <div className="text-lg font-medium flex gap-1 lg:order-1">
           <img src={creditsIcon} alt="" className=" h-7 " />
           <span> {credits} Credits</span>
         </div>

@@ -7,6 +7,7 @@ import {
   signOut,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -89,4 +90,5 @@ export {
   getCurrentUser,
   onAuthStateChanged,
   GoogleAuthProvider,
+  sendPasswordResetEmail,
 };

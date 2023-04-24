@@ -37,6 +37,8 @@ export const Credit = ({ credits, setCredits }) => {
     required
   />;
 
+   
+
   const handlePurchase = () => {
     setShowForm(true);
   };

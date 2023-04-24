@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Home, About, Dashboard, Login, Register } from "./Pages";
+import { Home, About, Dashboard, Login, Register, Reset } from "./Pages";
 import { DashboardLayout, AuthLayout, DefaultLayout } from "./Layouts";
 import { Routes, Route } from "react-router-dom";
 import {
@@ -9,8 +9,8 @@ import {
   createUserProfileDocument,
 } from "./Config/firebase.js";
 import { getFirestore, getDoc } from "firebase/firestore";
-import { useDispatch } from 'react-redux';
-import { loginUser} from './Features/userSlice'
+import { useDispatch } from "react-redux";
+import { loginUser } from "./Features/userSlice";
 
 function App() {
   const db = getFirestore();
@@ -24,9 +24,10 @@ function App() {
       const snapShot = await getDoc(userRef);
       if (!snapShot.exists()) return;
       const user = snapShot.data();
+      const { createdAt, lastLogin, ...userWithoutCreatedAt } = user; // remove createdAt from user object
       dispatch(
         loginUser({
-          user: user,
+          user: userWithoutCreatedAt,
           id: snapShot.id,
         })
       );
@@ -47,14 +48,14 @@ function App() {
             </DefaultLayout>
           }
         ></Route>
-        <Route
+        {/* <Route
           path="/about"
           element={
             <DefaultLayout>
               <About />
             </DefaultLayout>
           }
-        ></Route>
+        ></Route> */}
         <Route
           path="/dashboard"
           element={
@@ -76,6 +77,14 @@ function App() {
           element={
             <AuthLayout>
               <Register />
+            </AuthLayout>
+          }
+        ></Route>
+        <Route
+          path="/reset"
+          element={
+            <AuthLayout>
+              <Reset />
             </AuthLayout>
           }
         ></Route>

@@ -86,12 +86,11 @@ export const Register = () => {
                 Name
               </p>
               <input
-                className="h-11 border border-solid bg-white border-gray-300 font-normal 
+                className="form-btn h-11 border border-solid bg-white border-gray-300 font-normal 
              text-base text-gray-900 rounded-lg px-3.5 py-2.5 shadow-sm focus:border- 
           purple-300 focus:border focus:shadow-purple-100 focus:outline-none focus:ring-2 
               focus:ring-purple-200 disabled:background-gray-50 disabled:border-gray-300 
               disabled:text-gray-500 after:bg-white"
-                style={{ width: "360px" }}
                 id="name"
                 type="name"
                 placeholder="Enter your name"
@@ -100,8 +99,8 @@ export const Register = () => {
                 onChange={(event) => setDisplayName(event.target.value)}
                 {...(hasError && {
                   style: {
+                    width: "310px",
                     border: "1px solid red",
-                    width: "360px",
                   },
                 })}
               />
@@ -111,12 +110,11 @@ export const Register = () => {
                 Email
               </p>
               <input
-                className="h-11 border border-solid bg-white border-gray-300 font-normal 
+                className="form-btn h-11 border border-solid bg-white border-gray-300 font-normal 
              text-base text-gray-900 rounded-lg px-3.5 py-2.5 shadow-sm focus:border- 
           purple-300 focus:border focus:shadow-purple-100 focus:outline-none focus:ring-2 
               focus:ring-purple-200 disabled:background-gray-50 disabled:border-gray-300 
               disabled:text-gray-500 after:bg-white"
-                style={{ width: "360px" }}
                 id="email"
                 type="email"
                 placeholder="Enter your email"
@@ -126,7 +124,7 @@ export const Register = () => {
                 {...(hasError && {
                   style: {
                     border: "1px solid red",
-                    width: "360px",
+                    width: "310px",
                   },
                 })}
               />
@@ -136,12 +134,11 @@ export const Register = () => {
                 Password
               </p>
               <input
-                className="h-11 border border-solid bg-white border-gray-300 font-normal 
+                className="form-btn h-11 border border-solid bg-white border-gray-300 font-normal 
              text-base text-gray-900 rounded-lg px-3.5 py-2.5 shadow-sm focus:border- 
           purple-300 focus:border focus:shadow-purple-100 focus:outline-none focus:ring-2 
               focus:ring-purple-200 disabled:background-gray-50 disabled:border-gray-300 
               disabled:text-gray-500 after:bg-white"
-                style={{ width: "360px" }}
                 id="password"
                 type="password"
                 placeholder="Enter your password"
@@ -151,15 +148,14 @@ export const Register = () => {
                 {...(hasError && {
                   style: {
                     border: "1px solid red",
-                    width: "360px",
+                    width: "310px",
                   },
                 })}
               />
               <p>
                 {hasError && (
                   <span
-                    className="text-red-500 text-sm inline-block"
-                    style={{ width: "360px" }}
+                    className="form-btn text-red-500 text-sm inline-block"
                   >
                     {error}
                   </span>
@@ -172,25 +168,23 @@ export const Register = () => {
           </div>
           <div className="flex flex-col gap-4 mt-6">
             <button
-              className="h-11 text-white    rounded-lg border-solid font-semibold text-base 
+              className="form-btn h-11 text-white    rounded-lg border-solid font-semibold text-base 
                border-teal-600 hover:bg-teal-700  bg-teal-600 border    
                 hover:border-teal-700
                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100 
                focus:ring-offset-gray-100 flex items-center justify-center gap-3
             ,   disabled:cursor-not-allowed"
-              style={{ width: "360px" }}
             >
               Get Started
             </button>
           </div>
         </form>
         <button
-          class="h-11 text-gray-700  rounded-lg border-solid font-semibold text-base mt-4
+          class="form-btn h-11 text-gray-700  rounded-lg border-solid font-semibold text-base mt-4
                border-gray-300  bg-white border hover:border-gray-300 hover:bg-gray-50
                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-100 
                focus:ring-offset-gray-100 flex items-center justify-center gap-3
             ,   disabled:cursor-not-allowed"
-          style={{ width: "360px" }}
           onClick={signInWithGoogle}
         >
           <img src={googleSvg} alt="google-icon" height="24" width="24" />
