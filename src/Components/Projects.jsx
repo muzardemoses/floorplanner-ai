@@ -109,7 +109,8 @@ export const Projects = () => {
   };
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="" style={{ width: "500px",
+    }}>
       <h1 className="text-3xl font-bold my-6">Projects</h1>
       <button
         className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded my-4"
@@ -165,14 +166,6 @@ export const Projects = () => {
                     onChange={(e) => setNewProjectDescription(e.target.value)}
                   />
                 </div>
-
-                {/* <input
-                  className="border rounded px-2 py-1 mr-2"
-                  type="text"
-                  placeholder="New project description"
-                  //value={project.description}
-                  onChange={(e) => setNewProjectDescription(e.target.value)}
-                /> */}
                 <div className="flex gap-6 mt-6">
                   <button
                     className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded "
