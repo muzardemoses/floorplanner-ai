@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.png";
 import { auth, sendPasswordResetEmail } from "../Config/firebase.js";
+import { toast } from "react-toastify";
 
 export const Reset = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,8 @@ export const Reset = () => {
         url: "http://localhost:3000/login",
         handleCodeInApp: true,
       });
-      alert("Check your email for further instructions");
+      //alert("Check your email for further instructions");
+      toast.success("Check your email for further instructions");
       navigate("/");
     } catch (error) {
       alert(error.message);

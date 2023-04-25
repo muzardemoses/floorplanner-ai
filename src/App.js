@@ -3,6 +3,8 @@ import "./App.css";
 import { Home, About, Dashboard, Login, Register, Reset } from "./Pages";
 import { DashboardLayout, AuthLayout, DefaultLayout } from "./Layouts";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   onAuthStateChanged,
   auth,
@@ -89,6 +91,7 @@ function App() {
           }
         ></Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

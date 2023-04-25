@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.png";
 import googleSvg from "../Images/google.svg";
+import { toast } from "react-toastify";
 import { selectUser } from "../Features/userSlice";
 import { useSelector } from "react-redux";
 import {
@@ -43,6 +44,7 @@ export const Login = () => {
       await updateDoc(userRef, {
         lastLogin: serverTimestamp(),
       });
+      toast.success("Login successful");
     } catch (error) {
       setError(error.message);
       setHasError(true);

@@ -12,6 +12,7 @@ import {
 import { getFirestore } from "firebase/firestore";
 import logo from "../Images/logo.png";
 import googleSvg from "../Images/google.svg";
+import { toast } from "react-toastify";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ export const Register = () => {
         displayName,
         email,
       });
+      toast.success("Registration successful");
     } catch (error) {
       setError(error.message);
       setHasError(true);

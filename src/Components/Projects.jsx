@@ -1,6 +1,7 @@
 import { useState } from "react";
 import deleteIcon from "../Images/delete.svg";
 import editIcon from "../Images/edit.svg";
+import { toast } from "react-toastify";
 
 export const Projects = () => {
   const [projects, setProjects] = useState([
@@ -40,6 +41,12 @@ export const Projects = () => {
         : project
     );
     setProjects(updatedProjects);
+    // if favorited, show toast notification
+    if (updatedProjects.find((project) => project.id === id).isFavorite) {
+      toast.success("Project favorited!");
+    } else {
+      toast.error("Project unfavorited!");
+    }
   };
 
   const handleEditClick = (id) => {
@@ -47,6 +54,7 @@ export const Projects = () => {
       project.id === id ? { ...project, isBeingEdited: true } : project
     );
     setProjects(updatedProjects);
+    toast.info("Editing project...");
   };
 
   const handleEditCancel = (id) => {
@@ -54,6 +62,7 @@ export const Projects = () => {
       project.id === id ? { ...project, isBeingEdited: false } : project
     );
     setProjects(updatedProjects);
+    toast.error("Edit canceled!");
   };
 
   const handleEditSubmit = (id, newName, newDescription) => {
@@ -68,6 +77,7 @@ export const Projects = () => {
         : project
     );
     setProjects(updatedProjects);
+    toast.success("Project updated!");
   };
 
   const handleDeleteClick = (id) => {
@@ -81,6 +91,7 @@ export const Projects = () => {
     );
     setProjects(updatedProjects);
     setShowDeletePrompt(false);
+    toast.error("Project deleted!");
   };
 
   const handleDeleteCancel = () => {
@@ -108,6 +119,7 @@ export const Projects = () => {
     setNewProjectName("");
     setNewProjectDescription("");
     setShowCreateForm(false);
+    toast.success("New project created!");
   };
 
   return (

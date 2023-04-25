@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import cardNumIcon from "../Images/blank_card_icon.svg";
 import cVVIcon from "../Images/cvv_side_card_icon.svg";
 import creditsIcon from "../Images/credits.svg";
+import { toast } from "react-toastify";
 
 export const Credit = ({ credits, setCredits }) => {
   // const [credits, setCredits] = useState(0);
@@ -46,6 +47,7 @@ export const Credit = ({ credits, setCredits }) => {
   const cancelPurchase = () => {
     //setPurchaseAmount(0);
     setShowForm(false);
+    toast.error("Purchase cancelled");
   };
 
   const handleFormSubmit = (event) => {
@@ -62,6 +64,7 @@ export const Credit = ({ credits, setCredits }) => {
     setExpirationDate("");
     setCvv("");
     setShowForm(false);
+    toast.success("Purchase successful!");
   };
 
   return (

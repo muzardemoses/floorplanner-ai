@@ -7,6 +7,7 @@ import { Next } from "../Components/Next";
 import { Credit } from "../Components/Credit";
 import creditsIcon from "../Images/credits.svg";
 
+
 export const Dashboard = () => {
   const navigate = useNavigate();
   const user = useSelector(selectUser);

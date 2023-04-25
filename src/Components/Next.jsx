@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import tickIcon from "../Images/tick.svg";
+import { toast } from "react-toastify";
 
 export const Next = () => {
   const [step, setStep] = useState(1);
@@ -23,6 +24,7 @@ export const Next = () => {
   const onSubmitPurchase = () => {
     setIsPurchased(true);
     setStep(4);
+    toast.success("Floor plan purchased");
   };
 
   const resetForm = () => {
