@@ -65,14 +65,14 @@ export const Credit = ({ credits, setCredits }) => {
   };
 
   return (
-    <div className="">
+    <div className="transition-all duration-200 ease-in-out">
       <div className=" mb-4">
         {/* <div className="text-lg font-medium flex gap-1">
           <img src={creditsIcon} alt="" className=" h-7 " />
           <span> {credits} Credits</span>
         </div> */}
         <button
-          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200 ease-in-out"
           onClick={handlePurchase}
         >
           Purchase Credits
@@ -81,7 +81,7 @@ export const Credit = ({ credits, setCredits }) => {
       <div className="max-w-3xl mt-5 bg-white border-none  rounded-md shadow-md">
         {showForm ? (
           <form onSubmit={handleFormSubmit} className=" p-4  mb-4">
-            <h3 className="text-xl font-bold mb-2">Purchase Credits</h3>
+            <h3 className="text-xl font-bold mb-6">Purchase Credits</h3>
             <div className="flex items-center mb-4">
               <label htmlFor="amount" className="mr-2">
                 Amount:
@@ -89,7 +89,7 @@ export const Credit = ({ credits, setCredits }) => {
               <input
                 type="number"
                 id="amount"
-                className="border rounded-md px-2 py-1 w-24 focus:ring-green-600 focus:border-green-300 focus:outline-none"
+                className="border rounded-md px-2 py-1 w-24 focus:ring-green-600 focus:border-green-300 focus:outline-none transition duration-200 ease-in-out"
                 value={purchaseAmount}
                 onChange={(event) =>
                   setPurchaseAmount(parseInt(event.target.value, 10))
@@ -106,15 +106,15 @@ export const Credit = ({ credits, setCredits }) => {
               </span>
             </div>
             <h3 className="text-lg font-bold mb-2">Billing Information</h3>
-            <div className="flex flex-col md:flex-row">
-              <div className="flex-1 mr-4 mb-4 md:mb-0">
+            <div className="flex flex-col md:flex-row sm:flex-col gap-4">
+              <div className="flex-1  md:mb-0">
                 <label htmlFor="first-name" className="block mb-1">
                   First Name:
                 </label>
                 <input
                   type="text"
                   id="first-name"
-                  className="border rounded-md px-2 py-1 w-full focus:ring-green-600 focus:border-green-300 focus:outline-none"
+                  className="border rounded-md px-2 py-1 w-full focus:ring-green-600 focus:border-green-300 focus:outline-none transition duration-200 ease-in-out"
                   value={firstName}
                   onChange={(event) => setFirstName(event.target.value)}
                   required
@@ -127,14 +127,14 @@ export const Credit = ({ credits, setCredits }) => {
                 <input
                   type="text"
                   id="last-name"
-                  className="border rounded-md px-2 py-1 w-full focus:ring-green-600 focus:border-green-300 focus:outline-none"
+                  className="border rounded-md px-2 py-1 w-full focus:ring-green-600 focus:border-green-300 focus:outline-none transition duration-200 ease-in-out"
                   value={lastName}
                   onChange={(event) => setLastName(event.target.value)}
                   required
                 />
               </div>
             </div>
-            <div className="flex justify-between mt-5">
+            <div className="flex justify-between mt-5 md:flex-col md:gap-6">
               <div className="mr-4 mb-4 md:mb-0">
                 <label htmlFor="card-number" className="block mb-1">
                   Card Number:
@@ -143,7 +143,7 @@ export const Credit = ({ credits, setCredits }) => {
                   <input
                     type="text"
                     id="card-number"
-                    className="border rounded-md px-2 py-1 w-60 pl-14 h-10 focus:ring-green-600 focus:border-green-300 focus:outline-none"
+                    className="border rounded-md px-2 py-1 w-60 pl-14 h-10 focus:ring-green-600 focus:border-green-300 focus:outline-none transition duration-200 ease-in-out"
                     value={formatCardNumber(cardNumber)}
                     onChange={(event) => setCardNumber(event.target.value)}
                     required
@@ -157,7 +157,7 @@ export const Credit = ({ credits, setCredits }) => {
                   />
                 </div>
               </div>
-
+              <div className="flex gap-6 sm:flex-col">
               <div className=" mb-4 md:mb-0">
                 <label htmlFor="expiration-date" className="block mb-1">
                   Expiration Date:
@@ -165,7 +165,7 @@ export const Credit = ({ credits, setCredits }) => {
                 <input
                   type="text"
                   id="expiration-date"
-                  className="border rounded-md px-2 py-1 w-36 h-10 focus:ring-green-600 focus:border-green-300 focus:outline-none"
+                  className="border rounded-md px-2 py-1 w-36 h-10 focus:ring-green-600 focus:border-green-300 focus:outline-none transition duration-200 ease-in-out"
                   value={formatExpirationDate(expirationDate)}
                   onChange={(event) => setExpirationDate(event.target.value)}
                   required
@@ -181,7 +181,7 @@ export const Credit = ({ credits, setCredits }) => {
                   <input
                     type="text"
                     id="cvv"
-                    className="border rounded-md px-2 py-1 w-32 pl-14 h-10 focus:ring-green-600 focus:border-yellow-300 focus:outline-none"
+                    className="border rounded-md px-2 py-1 w-32 pl-14 h-10 focus:ring-green-600 focus:border-yellow-300 focus:outline-none transition duration-200 ease-in-out"
                     value={cvv}
                     onChange={(event) => setCvv(event.target.value)}
                     required
@@ -195,18 +195,21 @@ export const Credit = ({ credits, setCredits }) => {
                   />
                 </div>
               </div>
+              </div>
+
+              
             </div>
             <div className="flex gap-6 mt-7">
               <button
                 type="button"
-                className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-200 ease-in-out"
                 onClick={cancelPurchase}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200 ease-in-out"
               >
                 Purchase
               </button>

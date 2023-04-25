@@ -45,11 +45,7 @@ body {
   z-index: 1000;
 }
 
-
-
-
-
-.hamburger{
+.hamburger {
   cursor: pointer;
   width: 25px;
   height: 25px;
@@ -59,66 +55,72 @@ body {
 
 .harburger-top,
 .harburger-middle,
-.harburger-bottom{
+.harburger-bottom {
   position: absolute;
   top: 0;
   left: 0;
   width: 24px;
   height: 2px;
   transform: translate(0px);
-  transition:all 0.5s ;
+  transition: all 0.5s;
 }
-.harburger-middle{
+.harburger-middle {
   transform: translateY(7px);
 }
-.harburger-bottom{
+.harburger-bottom {
   transform: translateY(14px);
 }
 
-.open{
+.open {
   transform: rotate(90deg);
   transform: translateY(0px);
 }
-.open .harburger-top{
+.open .harburger-top {
   transform: rotate(45deg) translateY(6px) translate(6px);
 }
-.open .harburger-middle{
- display: none;
+.open .harburger-middle {
+  display: none;
 }
-.open .harburger-bottom{
+.open .harburger-bottom {
   transform: rotate(-45deg) translateY(6px) translate(-6px);
 }
 
-.form-btn{
+.form-btn {
   width: 360px;
 }
 
-@media screen and (max-width: 900px) {
+.pro{
+  width: 600px;
+}
 
- 
+@media screen and (max-width: 900px) {
   .header-links {
     position: fixed;
-    top:5rem;
+    top: 5rem;
     right: 0;
     height: 100%;
     width: 45%;
     z-index: 1;
     transform: translateX(100%);
-   
+
     /* background-color: rgb(35 44 58); */
   }
-  
+
   .header-links.open {
     transform: translateX(0%);
-  
   }
-  
-  .link-black{
+
+  .link-black {
     color: black;
   }
 
-  .form-btn{
+  .form-btn {
     width: 300px;
   }
-  
+}
+
+@media screen and (max-width: 639px) {
+  .pro{
+    width: 100%;
   }
+}

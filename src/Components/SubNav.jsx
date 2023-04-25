@@ -6,10 +6,9 @@ import { logout, selectUser } from "../Features/userSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-export const SubNav = () => {
+export const SubNav = ({ isSubNavVisible, setIsSubNavVisible }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [isSubNavVisible, setIsSubNavVisible] = useState(false);
 
   const SignOut = async () => {
     try {
@@ -22,20 +21,33 @@ export const SubNav = () => {
     }
   };
   return (
-    <div className=" bg-white w-60 flex flex-col justify-between items-center shadow py-10 h-screen hover:cursor-pointer">
+    <div
+    className={` md:fixed h-screen  z-50 overflow-x-hidden transition-all ${
+      isSubNavVisible ? "translate-x-0" : "-translate-x-full"
+    }`}
+  >
+    <div
+    //   style={{ display: isVisible ? "" : "none" , transition: "all 0.5s ease",
+    //     transform: isVisible ? "translateX(0)" : "translateX(-100%)",
+
+    // }}
+      className=" bg-white w-60 flex flex-col justify-between items-center shadow py-10 h-screen hover:cursor-pointer md:w-48"
+    >
       <img
         src={logo}
         alt="logo"
-        className="h-8"
+        className="h-8 md:h-6"
         onClick={() => navigate("/")}
       />
 
       <button
-        className="bg-teal-500 text-white h-10 px-14 rounded-md"
+        className="bg-teal-500 text-white h-10 px-14 rounded-md hover:bg-teal-700
+        transition duration-300 ease-in-out "
         onClick={SignOut}
       >
         Log Out
       </button>
+    </div>
     </div>
   );
 };

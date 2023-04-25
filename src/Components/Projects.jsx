@@ -1,4 +1,6 @@
 import { useState } from "react";
+import deleteIcon from "../Images/delete.svg";
+import editIcon from "../Images/edit.svg";
 
 export const Projects = () => {
   const [projects, setProjects] = useState([
@@ -109,90 +111,115 @@ export const Projects = () => {
   };
 
   return (
-    <div className="" style={{ width: "500px",
-    }}>
-      <h1 className="text-3xl font-bold my-6">Projects</h1>
+    <div className="">
+      <h1 className="text-3xl font-bold my-4 md:text-2xl ">Projects</h1>
       <button
-        className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded my-4"
+        className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded my-4 transition  duration-200 ease-in-out
+         md:text-sm "
         onClick={handleCreateFormOpen}
       >
         Create New Project
       </button>
-      <ul>
+      <ul className="grid grid-cols-2 grid-flow-row gap-6 2xl:flex 2xl:flex-col">
         {projects.map((project) => (
-          <li key={project.id} className="border p-4 rounded my-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <button
-                  className="text-2xl mr-4"
-                  onClick={() => handleFavoriteClick(project.id)}
-                >
-                  {project.isFavorite ? "★" : "☆"}
-                </button>
-                <div>
-                  <h2 className="text-xl font-bold">{project.name}</h2>
-                  <p>{project.description}</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <button
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-                  onClick={() => handleEditClick(project.id)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-                  onClick={() => handleDeleteClick(project.id)}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-            {project.isBeingEdited && (
-              <div className="mt-4">
-                <div className=" flex flex-col gap-4">
-                  <input
-                    className="border rounded px-2 py-1 mr-2 focus:ring-gray-100 focus:border-gray-300 focus:outline-none"
-                    type="text"
-                    placeholder="New project name"
-                    //   value={project.name}
-                    onChange={(e) => setNewProjectName(e.target.value)}
-                  />
-                  <textarea
-                    className="border rounded px-2 py-1 mr-2 focus:ring-gray-100 focus:border-gray-300 focus:outline-none h-24"
-                    placeholder="New project description"
-                    //value={project.description}
-                    onChange={(e) => setNewProjectDescription(e.target.value)}
-                  />
-                </div>
-                <div className="flex gap-6 mt-6">
+          <div className="pro">
+            <li
+              key={project.id}
+              className="bg-white shadow-md p-4 rounded my-4 sm:w-full transition duration-200 ease-in-out"
+            >
+              <div className="flex  justify-between flex-col  gap-5">
+                <div className="flex items-center">
                   <button
-                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded "
-                    onClick={() =>
-                      handleEditSubmit(
-                        project.id,
-                        newProjectName,
-                        newProjectDescription
-                      )
-                    }
+                    className="text-2xl mr-4 self-start"
+                    onClick={() => handleFavoriteClick(project.id)}
                   >
-                    Submit
+                    {project.isFavorite ? "★" : "☆"}
                   </button>
-                  <button
-                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => handleEditCancel(project.id)}
-                  >
-                    Cancel
+                  <div className=" flex flex-col gap-4 max-w-lg sm:w-11/12">
+                    <h2 className="text-xl font-bold ">
+                      {project.name ? project.name : "No Title"}
+                    </h2>
+                    <p
+                      className="pr-1 text-gray-600 font-medium text-base break-words transition duration-200 ease-in-out"
+                      style={{
+                        breakWord: "break-word",
+                      }}
+                    >
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="flex gap-4  self-end "
+                  style={{
+                    display: project.isBeingEdited ? "none" : "flex",
+                    width: "100px",
+                  }}
+                >
+                  <button className="h-8 w-8">
+                    <img
+                      src={editIcon}
+                      alt=""
+                      height={16}
+                      onClick={() => handleEditClick(project.id)}
+                    />
+                  </button>
+
+                  <button className="h-8 w-8">
+                    <img
+                      src={deleteIcon}
+                      alt=""
+                      height={16}
+                      onClick={() => handleDeleteClick(project.id)}
+                    />
                   </button>
                 </div>
               </div>
-            )}
-          </li>
+              {project.isBeingEdited && (
+                <div className="mt-4">
+                  <div className=" flex flex-col gap-4">
+                    <input
+                      className="border rounded px-2 py-1 mr-2 focus:ring-gray-100 focus:border-gray-300 focus:outline-none transition duration-200 ease-in-out"
+                      type="text"
+                      placeholder="New project name"
+                      //   value={project.name}
+                      onChange={(e) => setNewProjectName(e.target.value)}
+                    />
+                    <textarea
+                      className="border rounded px-2 py-1 mr-2 focus:ring-gray-100 focus:border-gray-300 focus:outline-none h-24 transition duration-200 ease-in-out"
+                      placeholder="New project description"
+                      //value={project.description}
+                      onChange={(e) => setNewProjectDescription(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex gap-6 mt-6">
+                    <button
+                      className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out"
+                      onClick={() =>
+                        handleEditSubmit(
+                          project.id,
+                          newProjectName,
+                          newProjectDescription
+                        )
+                      }
+                    >
+                      Submit
+                    </button>
+                    <button
+                      className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out"
+                      onClick={() => handleEditCancel(project.id)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              )}
+            </li>
+          </div>
         ))}
       </ul>
       {showCreateForm && (
-        <div className="border p-4 rounded my-4">
+        <div className="bg-white shadow-md p-4 rounded my-4">
           <h2 className="text-xl font-bold mb-4">Create New Project</h2>
           <div className="flex flex-col gap-4">
             <input
@@ -211,13 +238,13 @@ export const Projects = () => {
             />
             <div className="flex gap-4">
               <button
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out"
                 onClick={handleCreateFormSubmit}
               >
                 Submit
               </button>
               <button
-                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out"
                 onClick={handleCreateFormCancel}
               >
                 Cancel
@@ -227,18 +254,18 @@ export const Projects = () => {
         </div>
       )}
       {showDeletePrompt && (
-        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center transition duration-200 ease-in-out">
           <div className="bg-white p-4 rounded">
             <p>Are you sure you want to delete this project?</p>
             <div className="flex gap-4 mt-4">
               <button
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out"
                 onClick={handleDeleteConfirm}
               >
                 Yes
               </button>
               <button
-                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out"
                 onClick={handleDeleteCancel}
               >
                 No

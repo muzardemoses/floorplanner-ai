@@ -36,35 +36,36 @@ export const Dashboard = () => {
   // };
 
   return (
-    <div className="container mx-auto pt-24 px-8 flex flex-col gap-8">
-      <div>
+    <div className="container mx-auto pt-24 px-8 flex flex-col gap-8 sm:px-1 sm:pt-20">
+      <div className=" sm:px-8 flex justify-between sm:flex-col gap-4">
         {showUserDetails ? (
-          <div>
-            <h2 className="text-2xl font-semibold text-gray-700">
+          <div> 
+            <h2 className="text-2xl font-semibold text-gray-700 sm:text-xl">
               Welcome
               <span className="text-green-500"> {user.user.displayName}</span>
             </h2>
-            <h3 className="text-base font-medium text-gray-300">
+            <h3 className="text-base font-medium text-gray-300 ">
               {user.user.email}
             </h3>
           </div>
         ) : (
           <h1>Loading...</h1>
         )}
-      </div>
-
-      <div className="flex justify-between w-full px-12 lg:flex-col">
-        <div className=" lg:order-2">
-          <Projects />
-        </div>
-
-        {/* credits */}
-        <div className="text-lg font-medium flex gap-1 lg:order-1">
+         {/* credits */}
+         <div className="text-lg font-medium flex gap-1 lg:order-1">
           <img src={creditsIcon} alt="" className=" h-7 " />
           <span> {credits} Credits</span>
         </div>
       </div>
-      <div className="px-12 mt-5">
+
+      <div className=" w-full px-5   md:px-2 sm:px-2">
+        <div className=" lg:order-2">
+          <Projects />
+        </div>
+
+       
+      </div>
+      <div className="px-5 mt-5">
         <Credit credits={credits} setCredits={setCredits} />
         <Next />
       </div>
